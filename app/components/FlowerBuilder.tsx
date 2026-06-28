@@ -158,16 +158,8 @@ export default function FlowerBuilder({ config, onChange }: Props) {
     <div>
       <h2 className="text-xl font-semibold text-rose-500 mb-4">Design your flowers</h2>
 
-      <div className="flex justify-center gap-1 mb-6 flex-wrap">
-        {Array.from({ length: config.flowerCount }).map((_, i) => (
-          <Flower
-            key={i}
-            petalColor={config.petalColor}
-            centerColor={config.centerColor}
-            stemColor={config.stemColor}
-            flowerType={config.flowerType}
-          />
-        ))}
+      <div className="flex justify-center mb-6">
+        <p className="text-sm text-gray-400 italic">Preview updates as you customize below</p>
       </div>
 
       <div className="space-y-5">
