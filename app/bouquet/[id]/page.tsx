@@ -1,4 +1,4 @@
-import { supabase } from "../../lib/supabase"
+import { supabase } from "@/app/lib/supabase"
 import BouquetViewer from "../../components/BouquetViewer"
 import { notFound } from "next/navigation"
 
