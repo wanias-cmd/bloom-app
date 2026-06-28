@@ -1,12 +1,18 @@
 import { supabase } from "@/app/lib/supabase"
-import BouquetViewer from "../../components/BouquetViewer"
+import BouquetViewer from "@/app/components/BouquetViewer"
 import { notFound } from "next/navigation"
 
-export default async function BouquetPage({ params }: { params: { id: string } }) {
+type Props = {
+  params: Promise<{ id: string }>
+}
+
+export default async function BouquetPage({ params }: Props) {
+  const { id } = await params
+
   const { data, error } = await supabase
     .from("bouquets")
     .select("*")
-    .eq("id", params.id)
+    .eq("id", id)
     .single()
 
   if (error || !data) return notFound()
