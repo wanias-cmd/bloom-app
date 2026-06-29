@@ -171,8 +171,10 @@ export default function FlowerBuilder({ config, onChange }: Props) {
     <div>
       <h2 className="text-xl font-semibold text-rose-500 mb-2">Design your bouquet</h2>
 
-      <div className="flex justify-center mb-4">
-        <BouquetPreview config={config} />
+    <div className="flex justify-center mb-4">
+        <div className="w-48 h-48">
+          <BouquetPreview config={config} />
+        </div>
       </div>
 
       <div className="space-y-5">
