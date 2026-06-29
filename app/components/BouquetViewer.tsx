@@ -206,7 +206,7 @@ export default function BouquetViewer({ bouquet }: { bouquet: any }) {
 
       {bouquet.letter && (
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-4">
-            <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
+            <p className="text-gray-600 leading-relaxed whitespace-pre-wrap break-words overflow-hidden">
               {bouquet.letter}
             </p>
             <p className="text-right text-rose-400 font-semibold mt-4">
