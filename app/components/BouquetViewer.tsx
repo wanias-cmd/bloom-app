@@ -107,8 +107,6 @@ function BouquetSVG({ config }: { config: any }) {
     }
   }
 
-  const count = flowerCount || 3
-
   const flowerPositions = [
     [{ cx: 160, cy: 120 }],
     [{ cx: 130, cy: 130 }, { cx: 190, cy: 120 }],
@@ -117,59 +115,33 @@ function BouquetSVG({ config }: { config: any }) {
     [{ cx: 100, cy: 145 }, { cx: 135, cy: 120 }, { cx: 165, cy: 105 }, { cx: 200, cy: 118 }, { cx: 225, cy: 142 }],
   ]
 
+  const positions = flowerPositions[flowerCount - 1]
   const stemEndX = 160
   const stemEndY = 310
 
-  const positions = flowerPositions[count - 1]
-
   return (
-    <svg width="100%" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
-
+    <svg width="220" height="220" viewBox="0 0 320 380" xmlns="http://www.w3.org/2000/svg">
       {positions.map((pos, i) => (
-        <line
-          key={i}
-          x1={pos.cx}
-          y1={pos.cy + 10}
-          x2={stemEndX}
-          y2={stemEndY}
-          stroke={stemColor}
-          strokeWidth="4"
-          strokeLinecap="round"
+        <line key={i}
+          x1={pos.cx} y1={pos.cy + 10}
+          x2={stemEndX} y2={stemEndY}
+          stroke={stemColor} strokeWidth="4" strokeLinecap="round"
         />
       ))}
-
       <ellipse cx="160" cy="295" rx="28" ry="10" fill="#c8a876" opacity="0.3" />
-
       <path
         d="M138 290 Q130 265 118 258 Q138 260 148 280 Q155 255 148 235 Q165 258 158 282 Q168 258 178 240 Q172 262 172 282 Q182 262 202 258 Q190 268 182 290 Z"
-        fill="#e8607a"
-        opacity="0.85"
+        fill="#e8607a" opacity="0.85"
       />
-
       <rect x="152" y="288" width="16" height="30" rx="8" fill="#e8607a" opacity="0.7" />
-
-      <path
-        d="M136 292 Q120 300 115 315 Q130 305 148 308"
-        fill="none" stroke="#e8607a" strokeWidth="3" strokeLinecap="round" opacity="0.7"
-      />
-      <path
-        d="M184 292 Q200 300 205 315 Q190 305 172 308"
-        fill="none" stroke="#e8607a" strokeWidth="3" strokeLinecap="round" opacity="0.7"
-      />
-
+      <path d="M136 292 Q120 300 115 315 Q130 305 148 308"
+        fill="none" stroke="#e8607a" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
+      <path d="M184 292 Q200 300 205 315 Q190 305 172 308"
+        fill="none" stroke="#e8607a" strokeWidth="3" strokeLinecap="round" opacity="0.7" />
       <ellipse cx="160" cy="292" rx="10" ry="10" fill="#e8607a" opacity="0.9" />
-
-      <path
-        d="M138 290 Q148 310 160 315 Q172 310 182 290"
-        fill="none" stroke="#c8485a" strokeWidth="1.5" opacity="0.4"
-      />
-
       {positions.map((pos, i) => (
-        <g key={i}>
-          {renderPetals(pos.cx, pos.cy)}
-        </g>
+        <g key={i}>{renderPetals(pos.cx, pos.cy)}</g>
       ))}
-
     </svg>
   )
 }
@@ -224,20 +196,21 @@ export default function BouquetViewer({ bouquet }: { bouquet: any }) {
       <div className="max-w-lg mx-auto">
 
         <p className="text-center text-gray-400 text-sm mb-1">A bouquet for</p>
-        <h1 className="text-3xl font-bold text-rose-500 text-center mb-2">
+        <h1 className="text-3xl font-bold text-rose-500 text-center mb-4">
           {bouquet.receiver_name}
         </h1>
-<div className="flex justify-center mb-4">
-          <div className="w-56 h-56">
-            <BouquetSVG config={bouquet.flower_config} />
-          </div>
+
+        <div className="flex justify-center mb-6">
+          <BouquetSVG config={bouquet.flower_config} />
         </div>
 
         {bouquet.letter && (
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-4">
-           <p className="text-gray-600 leading-relaxed whitespace-pre-wrap max-h-60 overflow-y-auto">
-              {bouquet.letter}
-            </p>
+            <div style={{ maxHeight: "200px", overflowY: "auto" }}>
+              <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
+                {bouquet.letter}
+              </p>
+            </div>
             <p className="text-right text-rose-400 font-semibold mt-4">
               — {bouquet.sender_name}
             </p>
