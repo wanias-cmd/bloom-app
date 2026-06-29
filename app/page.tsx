@@ -14,7 +14,7 @@ export default function Home() {
     <div className="min-h-screen bg-rose-50 overflow-x-hidden">
 
       {mounted && (
-        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className="absolute text-4xl opacity-50" style={{ left: "5%", top: "10%", animation: "float 5s ease-in-out infinite" }}>
             🌸
           </div>
