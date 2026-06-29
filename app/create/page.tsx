@@ -40,9 +40,8 @@ export default function CreatePage() {
       })
       .select()
       .single()
-
- if (error) {
-      alert("Something went wrong. Please try again.")
+if (error) {
+      alert("Error: " + JSON.stringify(error))
       console.error(error)
       setLoading(false)
       return

@@ -227,14 +227,15 @@ export default function BouquetViewer({ bouquet }: { bouquet: any }) {
         <h1 className="text-3xl font-bold text-rose-500 text-center mb-2">
           {bouquet.receiver_name}
         </h1>
-
-        <div className="flex justify-center mb-4">
-          <BouquetSVG config={bouquet.flower_config} />
+<div className="flex justify-center mb-4">
+          <div className="w-56 h-56">
+            <BouquetSVG config={bouquet.flower_config} />
+          </div>
         </div>
 
         {bouquet.letter && (
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-4">
-            <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
+           <p className="text-gray-600 leading-relaxed whitespace-pre-wrap max-h-60 overflow-y-auto">
               {bouquet.letter}
             </p>
             <p className="text-right text-rose-400 font-semibold mt-4">
