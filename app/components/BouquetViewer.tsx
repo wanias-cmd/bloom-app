@@ -204,19 +204,16 @@ export default function BouquetViewer({ bouquet }: { bouquet: any }) {
           <BouquetSVG config={bouquet.flower_config} />
         </div>
 
-        {bouquet.letter && (
+      {bouquet.letter && (
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-4">
-            <div style={{ maxHeight: "200px", overflowY: "auto" }}>
-              <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
-                {bouquet.letter}
-              </p>
-            </div>
+            <p className="text-gray-600 leading-relaxed whitespace-pre-wrap">
+              {bouquet.letter}
+            </p>
             <p className="text-right text-rose-400 font-semibold mt-4">
               — {bouquet.sender_name}
             </p>
           </div>
         )}
-
         <p className="text-center text-gray-400 text-sm mt-6">
           Made with Bloom
         </p>
